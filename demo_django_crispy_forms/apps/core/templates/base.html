@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Mon site</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="//cdn.jsdelivr.net/jquery/2.2.3/jquery.min.js"></script>
+    {% block head-javascript %}{% endblock %}
+</head>
+<body>
+    <div class="container" role="main">
+    <div id="summary">
+        <div class="page-header">
+            {% block page-header %}{% endblock %}
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    </div>
+    <script src="//cdn.jsdelivr.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {% block foot-javascript %}{% endblock %}
+</body>
+</html>

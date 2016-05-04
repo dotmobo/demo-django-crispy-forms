@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head-javascript %}
+    {{ form.media }}
+{% endblock %}
+
+{% block page-header %}
+<h1>Inscription</h1>
+{% endblock %}
+
+{% block content %}
+<div class="row">{% crispy form %}</div>
+{% endblock %}
+
+{% block foot-javascript %}
+<script>
+$( document ).ready( function() {
+    // On interdit le copier/coller du mail
+    $('#id_confirmation_mail').bind('copy paste', function(e) {
+        e.preventDefault();
+    });
+    // On affiche le calendrier lorsqu'on clique sur le champ date de naissance
+    $('#id_birth_date').click(function(){
+        $(this).parent().data("DateTimePicker").show();
+    });
+    // On teste la valeur de la date et on la force à vide si elle est mauvaise
+    $('#id_birth_date').change(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var val = $(this).val();
+        var format = new RegExp("^\\d{2}\/\\d{2}\/\\d{4}$");
+        if(!format.test(val)) {
+            $(this).val("");
+        }
+    });
+    // Afficher l'onglet suivant en cliquant sur le bouton suivant
+    $('.btnNext').click(function(){
+        $('.nav-tabs > .active + li a').trigger('click');
+        $(".nav-tabs + .tab-content").find(":input:visible:first").focus();
+    });
+    // Affifcher l'onglet précédent en cliquant sur le bouton précédent
+    $('.btnPrevious').click(function(){
+        $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+        $(".nav-tabs + .tab-content").find(":input:visible:first").focus();
+    });
+});
+</script>
+{% endblock %}

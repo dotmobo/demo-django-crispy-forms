@@ -1,0 +1,5 @@
+Django==1.9.6
+django-countries==3.4.1
+django-crispy-forms==1.6.0
+django-simple-captcha==0.5.1
+git+https://github.com/nkunihiko/django-bootstrap3-datetimepicker.git@2fa9ea5
